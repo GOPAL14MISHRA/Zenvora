@@ -139,8 +139,8 @@ export function ContactPage() {
   return (
     <div className="bg-[#F8FAFC] min-h-screen">
       <SEO
-        title="Contact Us | Start a Digital Project"
-        description="Contact Zenvora Digital Studio to discuss your website, web application, e-commerce, UI/UX, or custom software project. Get a project estimate today."
+        title="Contact Zenvora Digitals | Start Your Digital Project"
+        description="Contact Zenvora Digitals to discuss website development, web applications, e-commerce, AI integration or your next digital project."
         url="https://www.zenvoradigitals.tech/contact"
         schema={contactBreadcrumb}
       />

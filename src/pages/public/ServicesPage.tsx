@@ -6,7 +6,11 @@ import { AmbientBackground } from '../../components/ui/AmbientBackground';
 export function ServicesPage() {
   return (
     <div className="bg-[#F7F4EE] min-h-screen">
-      <SEO title="Services" description="Explore Zenvora Digital Studio's full range of web development, UI/UX design, SaaS, AI, and digital product engineering services." />
+      <SEO 
+        title="Zenvora Digitals | Web Development & Digital Services" 
+        description="Explore Zenvora Digitals services including website development, web applications, e-commerce, UI/UX design, AI integration and backend/API development." 
+        url="https://www.zenvoradigitals.tech/services"
+      />
 
       {/* Hero */}
       <section className="relative pt-36 pb-16 overflow-hidden bg-[#F7F7F4EE]">

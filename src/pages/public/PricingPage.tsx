@@ -31,8 +31,9 @@ export function PricingPage() {
   return (
     <div className="bg-[#F7F4EE] min-h-screen">
       <SEO
-        title="Pricing"
-        description="Clear starting points and flexible solutions for web applications, SaaS platforms, and custom software by Zenvora Digital Studio."
+        title="Zenvora Digitals Pricing | Website & Digital Services"
+        description="Explore Zenvora Digitals pricing for website development, web applications, e-commerce solutions and other digital services."
+        url="https://www.zenvoradigitals.tech/pricing"
       />
 
       {/* Hero Header */}

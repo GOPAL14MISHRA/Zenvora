@@ -35,7 +35,11 @@ export function NotFoundPage() {
 export function PrivacyPage() {
   return (
     <>
-      <SEO title="Privacy Policy" />
+      <SEO 
+        title="Privacy Policy | Zenvora Digitals" 
+        description="Privacy policy and data collection practices for Zenvora Digitals."
+        url="https://www.zenvoradigitals.tech/privacy"
+      />
       <div className="min-h-screen bg-[#F7F4EE] pt-28 pb-20">
         <div className="container-custom max-w-3xl">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
@@ -67,7 +71,11 @@ export function PrivacyPage() {
 export function TermsPage() {
   return (
     <>
-      <SEO title="Terms & Conditions" />
+      <SEO 
+        title="Terms & Conditions | Zenvora Digitals" 
+        description="Terms and conditions for using Zenvora Digitals website and services."
+        url="https://www.zenvoradigitals.tech/terms"
+      />
       <div className="min-h-screen bg-[#F8FAFC] pt-28 pb-20">
         <div className="container-custom max-w-3xl">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>

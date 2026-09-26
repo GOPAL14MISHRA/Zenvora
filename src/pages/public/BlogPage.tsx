@@ -37,7 +37,11 @@ export function BlogPage() {
 
   return (
     <div className="bg-[#F8FAFC] min-h-screen">
-      <SEO title="Blog" description="Practical thoughts on technology, development, AI, product building and the digital world." />
+      <SEO 
+        title="Zenvora Digitals Blog | Web Development & Digital Growth" 
+        description="Read practical insights about website development, web applications, e-commerce, SEO, SaaS, AI and digital growth for businesses and startups." 
+        url="https://www.zenvoradigitals.tech/blog"
+      />
 
       {/* Hero */}
       <section className="relative pt-36 pb-16 overflow-hidden bg-[#F7F4EE]">

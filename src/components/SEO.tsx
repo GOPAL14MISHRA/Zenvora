@@ -27,7 +27,7 @@ export function SEO({
   const currentPath = typeof window !== 'undefined' ? window.location.pathname : '';
   const canonicalUrl = url || `${SITE_URL}${currentPath}`;
   const fullTitle = title
-    ? `${title} | Zenvora Digitals`
+    ? (title.includes('Zenvora Digitals') ? title : `${title} | Zenvora Digitals`)
     : 'Zenvora Digitals | Websites, Web Apps & Digital Solutions';
 
   const desc =

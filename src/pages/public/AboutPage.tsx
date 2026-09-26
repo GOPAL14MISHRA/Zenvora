@@ -14,7 +14,11 @@ const values = [
 export function AboutPage() {
   return (
     <div className="bg-[#F7F4EE] min-h-screen pt-20">
-      <SEO title="About" description="Learn about Zenvora Digital Studio, our capabilities and two-person engineering team." />
+      <SEO 
+        title="About Zenvora Digitals | Digital Solutions Company" 
+        description="Learn about Zenvora Digitals, our services, approach and mission to build modern digital solutions for businesses in India and worldwide." 
+        url="https://www.zenvoradigitals.tech/about"
+      />
 
       {/* Main Concise About Section */}
       <AboutSection />

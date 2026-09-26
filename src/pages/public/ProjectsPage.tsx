@@ -38,7 +38,11 @@ export function ProjectsPage() {
 
   return (
     <div className="bg-[#F7F4EE] min-h-screen">
-      <SEO title="Projects" description="Explore web applications, digital products, and custom software built by Zenvora Digital Studio." />
+      <SEO 
+        title="Zenvora Digitals | Web Development Projects & Case Studies" 
+        description="Explore websites, web applications, e-commerce platforms and digital products built by Zenvora Digitals for businesses, startups and growing brands." 
+        url="https://www.zenvoradigitals.tech/projects"
+      />
 
       {/* Hero */}
       <section className="relative pt-36 pb-16 overflow-hidden bg-[#F7F4EE]">
