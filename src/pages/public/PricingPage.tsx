@@ -1,9 +1,7 @@
-import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Check, ArrowRight, Info } from 'lucide-react';
 import { SEO } from '../../components/SEO';
 import { PricingSection, FaqSection, CTASection } from '../../components/sections/HomeSections';
-import { AmbientBackground } from '../../components/ui/AmbientBackground';
 
 const comparisonRows = [
   { feature: 'Pages', starter: 'Up to 5', business: 'Up to 8–10', custom: 'Custom' },
@@ -36,24 +34,6 @@ export function PricingPage() {
         url="https://www.zenvoradigitals.tech/pricing"
       />
 
-      {/* Hero Header */}
-      <section className="relative pt-36 pb-16 overflow-hidden bg-[#F7F4EE]">
-        <AmbientBackground variant="pricing" />
-        <div className="container-custom relative z-10">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FCE8E2] border border-[#E85D3F]/25 text-[#E85D3F] text-xs font-bold uppercase tracking-widest mb-4">
-              PRICING
-            </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#171717] tracking-tight leading-tight mb-4">
-              Clear Starting Points.<br />
-              <span className="text-[#E85D3F]">Flexible Solutions.</span>
-            </h1>
-            <p className="text-[#5F5A52] text-base sm:text-lg max-w-2xl leading-relaxed">
-              Choose a package that fits your needs, or talk to us about a custom project.
-            </p>
-          </motion.div>
-        </div>
-      </section>
 
       {/* Pricing Cards */}
       <PricingSection showFullCta={false} />
