@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { Search } from 'lucide-react';
+import { Search, Sparkles } from 'lucide-react';
 import { SEO } from '../../components/SEO';
 import { BlogCard } from '../../components/ui/Cards';
+import { AmbientBackground } from '../../components/ui/AmbientBackground';
 import { blogRepository } from '../../repositories/firebase/FirebaseBlogRepository';
 import type { BlogPost } from '../../types';
 
@@ -35,35 +36,37 @@ export function BlogPage() {
   }, [category, search, posts]);
 
   return (
-    <>
+    <div className="bg-[#F8FAFC] min-h-screen">
       <SEO title="Blog" description="Practical thoughts on technology, development, AI, product building and the digital world." />
 
       {/* Hero */}
-      <section className="relative pt-32 pb-16 overflow-hidden">
-        <div className="absolute inset-0 grid-bg" />
+      <section className="relative pt-36 pb-16 overflow-hidden bg-[#F7F4EE]">
+        <AmbientBackground variant="blog" />
         <div className="container-custom relative z-10">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-            <p className="text-blue-400 text-xs font-semibold uppercase tracking-widest mb-4">Blog</p>
-            <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4">Insights & Ideas</h1>
-            <p className="text-gray-400 text-lg max-w-xl">
-              Practical thoughts on technology, development, AI, product building and the digital world.
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FCE8E2] border border-[#E85D3F]/20 text-[#E85D3F] text-xs font-semibold uppercase tracking-widest mb-4">
+              <Sparkles size={12} /> Blog & Articles
+            </div>
+            <h1 className="text-4xl sm:text-5xl font-bold text-[#171717] mb-4">Insights & Ideas</h1>
+            <p className="text-[#5F5A52] text-lg max-w-xl">
+              Practical thoughts on technology, development, e-commerce, web applications and building modern digital products.
             </p>
           </motion.div>
         </div>
       </section>
 
       {/* Filters */}
-      <section className="pb-8">
+      <section className="pb-8 bg-[#F7F4EE] relative z-10">
         <div className="container-custom">
-          <div className="flex flex-col sm:flex-row gap-3 items-start sm:items-center">
+          <div className="flex flex-col sm:flex-row gap-3 items-start sm:items-center justify-between border-y border-[#DED9D0] py-5">
             <div className="relative flex-1 max-w-xs">
-              <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" />
+              <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#5F5A52]" />
               <input
                 type="text"
                 placeholder="Search articles..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="input-base pl-9 py-2.5 text-sm"
+                className="w-full bg-[#FFFFFF] border border-[#DED9D0] rounded-xl pl-9 pr-4 py-2.5 text-xs sm:text-sm text-[#171717] placeholder-[#5F5A52]/60 focus:outline-none focus:border-[#E85D3F] focus:ring-2 focus:ring-[#E85D3F]/10 transition-colors shadow-xs"
               />
             </div>
             <div className="flex flex-wrap gap-2">
@@ -71,10 +74,10 @@ export function BlogPage() {
                 <button
                   key={cat}
                   onClick={() => setCategory(cat)}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
+                  className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer ${
                     category === cat
-                      ? 'bg-violet-500/20 border border-violet-500/30 text-violet-300'
-                      : 'bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:border-white/20'
+                      ? 'bg-[#E85D3F] text-white shadow-xs'
+                      : 'bg-[#FFFFFF] border border-[#DED9D0] text-[#5F5A52] hover:text-[#171717] hover:border-[#171717]/30'
                   }`}
                 >
                   {cat}
@@ -86,24 +89,25 @@ export function BlogPage() {
       </section>
 
       {/* Grid */}
-      <section className="pb-20">
+      <section className="pb-20 bg-[#F8FAFC] relative z-10">
         <div className="container-custom">
           {filtered.length === 0 ? (
-            <div className="text-center py-20">
-              <p className="text-gray-400">No articles found.</p>
-              <button onClick={() => { setSearch(''); setCategory('All'); }} className="btn-secondary mt-4 text-sm">
+            <div className="text-center py-20 bg-white border border-slate-200 rounded-2xl shadow-sm">
+              <p className="text-slate-500">No articles found matching your query.</p>
+              <button onClick={() => { setSearch(''); setCategory('All'); }} className="btn-secondary mt-4 text-xs py-2 px-4 rounded-xl">
                 Reset Filters
               </button>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {filtered.map((p, i) => <BlogCard key={p.id} post={p} index={i} />)}
             </div>
           )}
         </div>
       </section>
-    </>
+    </div>
   );
 }
+
 
 

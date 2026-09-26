@@ -18,11 +18,15 @@ export function AdminLoginPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email || !password) { setError('Please enter email and password.'); return; }
+    let loginEmail = email.trim();
+    if (loginEmail.toLowerCase() === 'admin') {
+      loginEmail = 'admin@zenvora.com';
+    }
+    if (!loginEmail || !password) { setError('Please enter email and password.'); return; }
     setError('');
     setLoading(true);
     try {
-      await login(email, password);
+      await login(loginEmail, password);
       navigate(from, { replace: true });
     } catch (err: any) {
       setError(err.message || 'Login failed.');
@@ -33,10 +37,10 @@ export function AdminLoginPage() {
 
   return (
     <>
-      <SEO title="Admin Login" />
-      <div className="min-h-screen bg-bg-primary flex items-center justify-center px-4 relative overflow-hidden">
+      <SEO title="Admin Login" noindex />
+      <div className="min-h-screen bg-[#F7F4EE] flex items-center justify-center px-4 relative overflow-hidden">
         <div className="absolute inset-0 grid-bg" />
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl" />
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-96 h-96 bg-[#E85D3F]/5 rounded-full blur-3xl" />
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -47,24 +51,19 @@ export function AdminLoginPage() {
           <div className="text-center mb-8">
             <div className="w-12 h-12 mx-auto mb-4 flex items-center justify-center">
               <svg width="48" height="48" viewBox="0 0 32 32" fill="none">
-                <rect width="32" height="32" rx="8" fill="url(#login-grad)" />
+                <rect width="32" height="32" rx="8" fill="#E85D3F" />
                 <path d="M8 9h10l-8 7h10" stroke="white" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
                 <path d="M10 16h8l-2 7" stroke="white" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" opacity="0.6"/>
-                <defs>
-                  <linearGradient id="login-grad" x1="0" y1="0" x2="32" y2="32">
-                    <stop stopColor="#3B82F6"/><stop offset="1" stopColor="#8B5CF6"/>
-                  </linearGradient>
-                </defs>
               </svg>
             </div>
-            <h1 className="text-xl font-bold text-white">Admin Portal</h1>
-            <p className="text-gray-500 text-sm mt-1">Zenvora Digital</p>
+            <h1 className="text-xl font-bold text-[#171717]">Admin Portal</h1>
+            <p className="text-[#5F5A52] text-sm mt-1">Zenvora</p>
           </div>
 
           <div className="card-base p-7">
             <form onSubmit={handleSubmit} noValidate>
               {error && (
-                <div className="flex items-center gap-2 text-red-400 text-sm mb-4 p-3 rounded-xl bg-red-500/10 border border-red-500/20">
+                <div className="flex items-center gap-2 text-red-600 text-sm mb-4 p-3 rounded-xl bg-red-50 border border-red-200">
                   <AlertCircle size={14} /> {error}
                 </div>
               )}
@@ -73,7 +72,7 @@ export function AdminLoginPage() {
                 <label className="label-base">Email</label>
                 <input
                   type="email" value={email} onChange={(e) => setEmail(e.target.value)}
-                  placeholder="admin@zenvoradigital.com" className="input-base" autoComplete="email"
+                  placeholder="admin@zenvora.com" className="input-base" autoComplete="email"
                 />
               </div>
 
@@ -86,7 +85,7 @@ export function AdminLoginPage() {
                     placeholder="••••••••" className="input-base pr-10" autoComplete="current-password"
                   />
                   <button type="button" onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-300">
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-[#5F5A52] hover:text-[#171717]">
                     {showPassword ? <EyeOff size={15} /> : <Eye size={15} />}
                   </button>
                 </div>
@@ -102,7 +101,7 @@ export function AdminLoginPage() {
               </button>
             </form>
 
-            <p className="text-center text-gray-600 text-xs mt-5">
+            <p className="text-center text-[#5F5A52] text-xs mt-5">
               Please sign in with your administrator credentials.
             </p>
           </div>

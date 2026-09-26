@@ -32,9 +32,9 @@ export function SignupPage() {
   return (
     <>
       <SEO title="Sign Up" />
-      <div className="min-h-screen bg-bg-primary flex items-center justify-center px-4 relative overflow-hidden pt-20">
+      <div className="min-h-screen bg-[#F7F4EE] flex items-center justify-center px-4 relative overflow-hidden pt-20">
         <div className="absolute inset-0 grid-bg" />
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-96 h-96 bg-violet-500/5 rounded-full blur-3xl" />
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-96 h-96 bg-[#E85D3F]/5 rounded-full blur-3xl" />
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -42,14 +42,14 @@ export function SignupPage() {
           className="relative z-10 w-full max-w-sm"
         >
           <div className="text-center mb-8">
-            <h1 className="text-2xl font-bold text-white">Create an Account</h1>
-            <p className="text-gray-400 mt-2">Join Zenvora Digital today</p>
+            <h1 className="text-2xl font-bold text-[#171717]">Create an Account</h1>
+            <p className="text-[#5F5A52] mt-2">Join Zenvora today</p>
           </div>
 
           <div className="card-base p-7">
             <form onSubmit={handleSubmit} noValidate>
               {error && (
-                <div className="flex items-center gap-2 text-red-400 text-sm mb-4 p-3 rounded-xl bg-red-500/10 border border-red-500/20">
+                <div className="flex items-center gap-2 text-red-600 text-sm mb-4 p-3 rounded-xl bg-red-50 border border-red-200">
                   <AlertCircle size={14} /> {error}
                 </div>
               )}
@@ -71,7 +71,7 @@ export function SignupPage() {
                     placeholder="••••••••" className="input-base pr-10" autoComplete="new-password"
                   />
                   <button type="button" onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-300">
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-[#5F5A52] hover:text-[#171717]">
                     {showPassword ? <EyeOff size={15} /> : <Eye size={15} />}
                   </button>
                 </div>
@@ -85,8 +85,8 @@ export function SignupPage() {
               </button>
             </form>
 
-            <p className="text-center text-gray-400 text-sm mt-5">
-              Already have an account? <Link to="/login" className="text-violet-400 hover:text-violet-300">Log in</Link>
+            <p className="text-center text-[#5F5A52] text-sm mt-5">
+              Already have an account? <Link to="/login" className="text-[#E85D3F] hover:text-[#d44c2e] font-semibold">Log in</Link>
             </p>
           </div>
         </motion.div>

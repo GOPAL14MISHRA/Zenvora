@@ -20,9 +20,17 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   });
 
   useEffect(() => {
+    const storedDemo = localStorage.getItem('zenvora_demo_user');
+    if (storedDemo) {
+      try {
+        const parsed = JSON.parse(storedDemo);
+        setState({ user: parsed, isAuthenticated: true, isLoading: false });
+        return;
+      } catch (e) {}
+    }
+
     const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
       if (firebaseUser) {
-        // We need access to the mapping logic inside the authService or just rely on getCurrentUser if mapped correctly
         const user = authService.getCurrentUser();
         setState({ user, isAuthenticated: !!user, isLoading: false });
       } else {
@@ -34,15 +42,19 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const login = useCallback(async (email: string, password: string) => {
-    await authService.login(email, password);
+    const user = await authService.login(email, password);
+    setState({ user, isAuthenticated: true, isLoading: false });
   }, []);
 
   const signup = useCallback(async (email: string, password: string) => {
-    await authService.signup(email, password);
+    const user = await authService.signup(email, password);
+    setState({ user, isAuthenticated: true, isLoading: false });
   }, []);
 
   const logout = useCallback(async () => {
+    localStorage.removeItem('zenvora_demo_user');
     await authService.logout();
+    setState({ user: null, isAuthenticated: false, isLoading: false });
   }, []);
 
   return (

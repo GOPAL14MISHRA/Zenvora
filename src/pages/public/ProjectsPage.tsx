@@ -3,10 +3,9 @@ import { motion } from 'framer-motion';
 import { Search } from 'lucide-react';
 import { SEO } from '../../components/SEO';
 import { ProjectCard } from '../../components/ui/Cards';
+import { AmbientBackground } from '../../components/ui/AmbientBackground';
 import { projectRepository } from '../../repositories/firebase/FirebaseProjectRepository';
 import type { Project } from '../../types';
-
-const categories = ['All', 'E-commerce', 'EdTech', 'AI / SaaS', 'Web'];
 
 export function ProjectsPage() {
   const [projects, setProjects] = useState<Project[]>([]);
@@ -22,6 +21,8 @@ export function ProjectsPage() {
     return () => unsubscribe();
   }, []);
 
+  const categories = ['All', ...Array.from(new Set(projects.map((p) => p.category)))];
+
   useEffect(() => {
     let result = projects;
     if (category !== 'All') result = result.filter((p) => p.category === category);
@@ -36,36 +37,38 @@ export function ProjectsPage() {
   }, [category, search, projects]);
 
   return (
-    <>
-      <SEO title="Projects" description="Explore digital products built by Zenvora Digital with thoughtful design and modern engineering." />
+    <div className="bg-[#F7F4EE] min-h-screen">
+      <SEO title="Projects" description="Explore web applications, digital products, and custom software built by Zenvora Digital Studio." />
 
       {/* Hero */}
-      <section className="relative pt-32 pb-16 overflow-hidden">
-        <div className="absolute inset-0 grid-bg" />
+      <section className="relative pt-36 pb-16 overflow-hidden bg-[#F7F4EE]">
+        <AmbientBackground variant="projects" />
         <div className="container-custom relative z-10">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-            <p className="text-blue-400 text-xs font-semibold uppercase tracking-widest mb-4">Our Work</p>
-            <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4">Digital Products We've Built</h1>
-            <p className="text-gray-400 text-lg max-w-xl">
-              Digital products built with thoughtful design and modern engineering.
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FCE8E2] border border-[#E85D3F]/25 text-[#E85D3F] text-xs font-bold uppercase tracking-widest mb-4">
+              SELECTED WORK
+            </div>
+            <h1 className="text-4xl sm:text-6xl font-extrabold text-[#171717] mb-4">Web Development Showcase</h1>
+            <p className="text-[#5F5A52] text-base sm:text-lg max-w-2xl leading-relaxed">
+              Real websites. Real web applications. Engineered for performance, usability, and business outcomes.
             </p>
           </motion.div>
         </div>
       </section>
 
       {/* Filters */}
-      <section className="pb-6">
+      <section className="pb-10 relative z-10 bg-[#F7F4EE]">
         <div className="container-custom">
-          <div className="flex flex-col sm:flex-row gap-3 items-start sm:items-center">
+          <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between border-y border-[#DED9D0] py-5">
             {/* Search */}
-            <div className="relative flex-1 max-w-xs">
-              <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" />
+            <div className="relative flex-1 max-w-sm w-full">
+              <Search size={15} className="absolute left-4 top-1/2 -translate-y-1/2 text-[#5F5A52]" />
               <input
                 type="text"
-                placeholder="Search projects..."
+                placeholder="Search projects by title, stack..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="input-base pl-9 py-2.5 text-sm"
+                className="w-full bg-white border border-[#DED9D0] rounded-xl pl-10 pr-4 py-2.5 text-xs sm:text-sm text-[#171717] placeholder-[#5F5A52] focus:outline-none focus:border-[#E85D3F] focus:ring-2 focus:ring-[#E85D3F]/10 transition-colors shadow-xs"
               />
             </div>
             {/* Category filters */}
@@ -74,10 +77,10 @@ export function ProjectsPage() {
                 <button
                   key={cat}
                   onClick={() => setCategory(cat)}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
+                  className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
                     category === cat
-                      ? 'bg-blue-500/20 border border-blue-500/30 text-blue-300'
-                      : 'bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:border-white/20'
+                      ? 'bg-[#E85D3F] text-white shadow-xs'
+                      : 'bg-white border border-[#DED9D0] text-[#5F5A52] hover:text-[#171717] hover:border-[#171717]'
                   }`}
                 >
                   {cat}
@@ -89,24 +92,26 @@ export function ProjectsPage() {
       </section>
 
       {/* Grid */}
-      <section className="pb-20">
+      <section className="pb-28 relative z-10 bg-[#F7F4EE]">
         <div className="container-custom">
           {filtered.length === 0 ? (
-            <div className="text-center py-20">
-              <p className="text-gray-400">No projects found matching your criteria.</p>
-              <button onClick={() => { setSearch(''); setCategory('All'); }} className="btn-secondary mt-4 text-sm">
+            <div className="text-center py-20 bg-white rounded-2xl border border-[#DED9D0] shadow-xs">
+              <p className="text-[#5F5A52] text-sm">No projects found matching your criteria.</p>
+              <button onClick={() => { setSearch(''); setCategory('All'); }} className="btn-secondary mt-4 text-xs py-2 px-4 rounded-xl">
                 Reset Filters
               </button>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
               {filtered.map((p, i) => <ProjectCard key={p.id} project={p} index={i} />)}
             </div>
           )}
         </div>
       </section>
-    </>
+    </div>
   );
 }
+
+
 
 

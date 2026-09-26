@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ArrowRight, User } from 'lucide-react';
-import { useAuth } from '../../context/AuthContext';
+import { Menu, X, ArrowRight } from 'lucide-react';
 
 const navLinks = [
   { label: 'Home', href: '/' },
   { label: 'About', href: '/about' },
   { label: 'Services', href: '/services' },
   { label: 'Projects', href: '/projects' },
+  { label: 'Pricing', href: '/pricing' },
   { label: 'Blog', href: '/blog' },
   { label: 'Contact', href: '/contact' },
 ];
@@ -18,7 +18,6 @@ export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
-  const { user, isAuthenticated, logout } = useAuth();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -44,84 +43,65 @@ export function Navbar() {
 
   return (
     <>
-      <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled
-            ? 'bg-[#07090D]/90 backdrop-blur-xl border-b border-white/5 shadow-lg shadow-black/20'
-            : 'bg-transparent'
-        }`}
-      >
-        <div className="container-custom">
-          <div className="flex items-center justify-between h-16 lg:h-20">
+      <header className="fixed top-0 left-0 right-0 z-50 pt-4 pb-2 px-4 sm:px-6 transition-all duration-300">
+        <div className="max-w-7xl mx-auto">
+          <div
+            className={`flex items-center justify-between px-5 py-3 rounded-2xl backdrop-blur-xl border transition-all duration-300 ${
+              scrolled
+                ? 'bg-white/95 border-[#DED9D0] shadow-xs'
+                : 'bg-[#F7F4EE]/90 border-[#DED9D0]/80 shadow-xs'
+            }`}
+          >
             {/* Logo */}
-            <Link to="/" className="flex items-center gap-2.5 group">
-              <div className="w-8 h-8 relative flex items-center justify-center">
-                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <rect width="32" height="32" rx="8" fill="url(#logo-grad)" />
-                  <path d="M8 9h10l-8 7h10" stroke="white" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
-                  <path d="M10 16h8l-2 7" stroke="white" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" opacity="0.6"/>
-                  <defs>
-                    <linearGradient id="logo-grad" x1="0" y1="0" x2="32" y2="32">
-                      <stop stopColor="#3B82F6"/>
-                      <stop offset="1" stopColor="#8B5CF6"/>
-                    </linearGradient>
-                  </defs>
-                </svg>
-              </div>
-              <div className="leading-none">
-                <div className="text-white font-bold text-sm tracking-wider uppercase">Zenvora</div>
-                <div className="text-[10px] tracking-[0.2em] text-blue-400 uppercase font-medium">Digital</div>
-              </div>
+            <Link to="/" className="flex items-center gap-3 group">
+              <img src="/logo.png" alt="Zenvora Digitals" className="h-14 md:h-16 w-auto object-contain group-hover:scale-105 transition-transform duration-300" />
             </Link>
 
             {/* Desktop Nav */}
-            <nav className="hidden lg:flex items-center gap-8">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  to={link.href}
-                  className={`text-sm font-medium transition-colors duration-200 ${
-                    isActive(link.href)
-                      ? 'text-white'
-                      : 'text-gray-400 hover:text-white'
-                  }`}
-                >
-                  {link.label}
-                </Link>
-              ))}
+            <nav className="hidden lg:flex items-center gap-1 bg-[#EBE7DF]/60 border border-[#DED9D0] p-1.5 rounded-full">
+              {navLinks.map((link) => {
+                const active = isActive(link.href);
+                return (
+                  <Link
+                    key={link.href}
+                    to={link.href}
+                    className={`relative px-4 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 ${
+                      active
+                        ? 'text-[#171717] bg-white border border-[#DED9D0] shadow-xs'
+                        : 'text-[#5F5A52] hover:text-[#171717] hover:bg-white/60'
+                    }`}
+                  >
+                    {link.label}
+                    {active && (
+                      <motion.span
+                        layoutId="activeTab"
+                        className="absolute inset-0 rounded-full border border-[#E85D3F]/30 bg-[#FCE8E2]/50 pointer-events-none"
+                        transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                      />
+                    )}
+                  </Link>
+                );
+              })}
             </nav>
 
             {/* Desktop CTA */}
             <div className="hidden lg:flex items-center gap-3">
-              {isAuthenticated ? (
-                <div className="flex items-center gap-3">
-                  <Link to={user?.role === 'admin' ? '/admin' : '/'} className="text-sm text-gray-300 hover:text-white flex items-center gap-2">
-                    <User size={16} /> {user?.name}
-                  </Link>
-                  <button onClick={() => logout()} className="text-sm text-gray-400 hover:text-white">Logout</button>
-                </div>
-              ) : (
-                <div className="flex items-center gap-3">
-                  <Link to="/login" className="text-sm font-medium text-gray-300 hover:text-white">Log in</Link>
-                  <Link to="/signup" className="btn-secondary text-sm py-2 px-4">Sign up</Link>
-                </div>
-              )}
               <button
                 onClick={() => navigate('/contact')}
-                className="btn-primary text-sm py-2.5 ml-2"
+                className="btn-primary text-xs py-2.5 px-5 rounded-xl shadow-xs transition-all cursor-pointer flex items-center gap-1.5"
               >
-                Start a Project
-                <ArrowRight size={14} />
+                <span>Start a Project</span>
+                <ArrowRight size={13} />
               </button>
             </div>
 
             {/* Mobile toggle */}
             <button
-              className="lg:hidden p-2 text-gray-400 hover:text-white transition-colors"
+              className="lg:hidden p-2 text-[#171717] hover:text-[#E85D3F] transition-colors rounded-xl bg-white border border-[#DED9D0] cursor-pointer"
               onClick={() => setMobileOpen(!mobileOpen)}
               aria-label="Toggle menu"
             >
-              {mobileOpen ? <X size={22} /> : <Menu size={22} />}
+              {mobileOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
           </div>
         </div>
@@ -135,7 +115,7 @@ export function Navbar() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm lg:hidden"
+              className="fixed inset-0 z-40 bg-[#171717]/40 backdrop-blur-xs lg:hidden"
               onClick={() => setMobileOpen(false)}
             />
             <motion.div
@@ -143,50 +123,51 @@ export function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', damping: 30, stiffness: 300 }}
-              className="fixed top-0 right-0 bottom-0 z-50 w-72 bg-[#0D1117] border-l border-white/5 lg:hidden flex flex-col"
+              className="fixed top-0 right-0 bottom-0 z-50 w-80 bg-[#F7F4EE] border-l border-[#DED9D0] lg:hidden flex flex-col justify-between shadow-2xl"
             >
-              <div className="flex items-center justify-between p-5 border-b border-white/5">
-                <span className="text-white font-semibold">Menu</span>
-                <button
-                  onClick={() => setMobileOpen(false)}
-                  className="p-1.5 text-gray-400 hover:text-white"
-                  aria-label="Close menu"
-                >
-                  <X size={20} />
-                </button>
-              </div>
-              <nav className="flex-1 p-5 space-y-1">
-                {navLinks.map((link) => (
-                  <Link
-                    key={link.href}
-                    to={link.href}
-                    className={`block px-4 py-3 rounded-xl text-sm font-medium transition-colors ${
-                      isActive(link.href)
-                        ? 'bg-blue-500/10 text-blue-400'
-                        : 'text-gray-300 hover:text-white hover:bg-white/5'
-                    }`}
-                  >
-                    {link.label}
-                  </Link>
-                ))}
-              </nav>
-              <div className="p-5 border-t border-white/5 space-y-3">
-                {isAuthenticated ? (
-                  <>
-                    <div className="text-sm text-gray-300 mb-2 flex items-center gap-2"><User size={14} /> {user?.name}</div>
-                    <button onClick={() => { logout(); setMobileOpen(false); }} className="btn-secondary w-full justify-center text-sm">Logout</button>
-                  </>
-                ) : (
-                  <div className="flex gap-2">
-                    <button onClick={() => { navigate('/login'); setMobileOpen(false); }} className="btn-secondary flex-1 justify-center text-sm">Log in</button>
-                    <button onClick={() => { navigate('/signup'); setMobileOpen(false); }} className="btn-primary flex-1 justify-center text-sm">Sign up</button>
+              <div>
+                <div className="flex items-center justify-between p-6 border-b border-[#DED9D0]">
+                  <div className="flex items-center gap-2">
+                    <div className="w-7 h-7 rounded-lg bg-[#171717] flex items-center justify-center text-white font-bold text-xs">
+                      Z
+                    </div>
+                    <div>
+                      <span className="text-[#171717] font-extrabold text-sm tracking-wider uppercase block leading-none">ZENVORA</span>
+                      <span className="text-[7.5px] text-[#E85D3F] font-bold tracking-widest uppercase block mt-0.5">DIGITAL STUDIO</span>
+                    </div>
                   </div>
-                )}
+                  <button
+                    onClick={() => setMobileOpen(false)}
+                    className="p-2 text-[#5F5A52] hover:text-[#171717] rounded-xl bg-white border border-[#DED9D0] cursor-pointer"
+                    aria-label="Close menu"
+                  >
+                    <X size={18} />
+                  </button>
+                </div>
+                <nav className="p-6 space-y-2">
+                  {navLinks.map((link) => (
+                    <Link
+                      key={link.href}
+                      to={link.href}
+                      className={`flex items-center justify-between px-4 py-3 rounded-xl text-sm font-semibold transition-all ${
+                        isActive(link.href)
+                          ? 'bg-[#FCE8E2] text-[#E85D3F] border border-[#E85D3F]/30'
+                          : 'text-[#5F5A52] hover:text-[#171717] hover:bg-white'
+                      }`}
+                    >
+                      {link.label}
+                      <ArrowRight size={13} className={`transition-transform ${isActive(link.href) ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-2'}`} />
+                    </Link>
+                  ))}
+                </nav>
+              </div>
+
+              <div className="p-6 border-t border-[#DED9D0] bg-white">
                 <button
                   onClick={() => { navigate('/contact'); setMobileOpen(false); }}
-                  className="btn-primary w-full justify-center text-sm"
+                  className="btn-primary w-full justify-center text-sm py-3 cursor-pointer"
                 >
-                  Start a Project
+                  <span>Start a Project</span>
                   <ArrowRight size={14} />
                 </button>
               </div>
@@ -197,3 +178,5 @@ export function Navbar() {
     </>
   );
 }
+
+

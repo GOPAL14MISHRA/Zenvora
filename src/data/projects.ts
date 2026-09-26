@@ -21,7 +21,7 @@ export const projects: Project[] = [
       'Admin product management panel',
     ],
     category: 'E-commerce',
-    technologies: [],
+    technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Node.js', 'E-commerce'],
     image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80',
     gallery: [
       'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80',
@@ -54,7 +54,7 @@ export const projects: Project[] = [
       'Admin course management',
     ],
     category: 'EdTech',
-    technologies: [],
+    technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Vite', 'EdTech'],
     image: 'https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=800&q=80',
     gallery: [
       'https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=800&q=80',
@@ -87,7 +87,7 @@ export const projects: Project[] = [
       'Responsive modern design',
     ],
     category: 'AI / SaaS',
-    technologies: [],
+    technologies: ['React', 'TypeScript', 'Tailwind CSS', 'AI / OpenAI', 'SaaS'],
     image: 'https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&q=80',
     gallery: [
       'https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&q=80',

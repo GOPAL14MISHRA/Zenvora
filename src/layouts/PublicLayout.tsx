@@ -19,7 +19,7 @@ const WhatsAppButton = () => (
 
 export function PublicLayout() {
   return (
-    <div className="min-h-screen flex flex-col bg-bg-primary">
+    <div className="min-h-screen flex flex-col bg-[#F8FAFC] text-slate-900">
       <Navbar />
       <main className="flex-1">
         <Outlet />

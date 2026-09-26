@@ -2,22 +2,22 @@ import type { SiteSettings } from '../types';
 
 export const siteSettings: SiteSettings = {
   // General
-  companyName: 'Zenvora Digital',
-  tagline: 'We Build Digital Experiences That Drive Growth.',
+  companyName: 'Zenvora',
+  tagline: 'We design and build digital experiences for modern businesses.',
   email: 'mishragopal532a20@gmail.com',
   phone: undefined,
   location: 'India',
 
   // Homepage
-  heroTitle: 'Turning Ideas Into Digital Experiences That Drive Growth.',
+  heroTitle: 'We design and build digital experiences for modern businesses.',
   heroDescription:
-    'Zenvora Digital designs and builds fast, scalable and high-converting digital products for startups, businesses and ambitious founders.',
+    'Web applications, SaaS products, UI/UX design, e-commerce platforms, AI integration, and custom digital software built for ambitious brands.',
   heroCTA: 'Start a Project →',
   stats: [
-    { value: '7', label: 'Projects Built' },
+    { value: '20+', label: 'Projects Built' },
     { value: '15+', label: 'Technologies Used' },
     { value: '100%', label: 'Client Focus' },
-    { value: '24/7', label: 'Digital Thinking' },
+    { value: '2-Person', label: 'Engineering Team' },
   ],
   techBadges: [
     'React',
@@ -40,16 +40,16 @@ export const siteSettings: SiteSettings = {
   // Social
   github: 'https://github.com/zenvoradigital',
   linkedin: 'https://linkedin.com/company/zenvoradigital',
-  instagram: 'https://instagram.com/zenvoradigital',
+  instagram: 'https://www.instagram.com/zenvora_digitals_web/',
   twitter: 'https://x.com/zenvoradigital',
 
   // SEO
-  metaTitle: 'Zenvora Digital – Digital Product & Software Studio',
+  metaTitle: 'Zenvora Digital Studio – Digital Products & Custom Software',
   metaDescription:
-    'Zenvora Digital builds modern websites, web applications, SaaS products, e-commerce platforms and AI-powered solutions for businesses, startups and founders.',
+    'Zenvora Digital Studio designs and builds web applications, SaaS platforms, UI/UX, e-commerce, and custom software for modern businesses.',
   ogImage: undefined,
 
   // Footer
-  footerDescription: 'We Build Digital Experiences That Drive Growth.',
-  copyright: '© 2026 Zenvora Digital. All rights reserved.',
+  footerDescription: 'We design and build digital experiences, web applications, and custom software for modern businesses.',
+  copyright: '© 2026 Zenvora Digital Studio. All rights reserved.',
 };

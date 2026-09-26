@@ -9,14 +9,15 @@ import { AdminLayout } from './layouts/AdminLayout';
 import { HomePage } from './pages/public/HomePage';
 import { AboutPage } from './pages/public/AboutPage';
 import { ServicesPage } from './pages/public/ServicesPage';
+import { ServiceDetailPage } from './pages/public/ServiceDetailPage';
 import { ProjectsPage } from './pages/public/ProjectsPage';
 import { ProjectDetailPage } from './pages/public/ProjectDetailPage';
+import { PricingPage } from './pages/public/PricingPage';
 import { BlogPage } from './pages/public/BlogPage';
 import { BlogDetailPage } from './pages/public/BlogDetailPage';
 import { ContactPage } from './pages/public/ContactPage';
-import { LoginPage } from './pages/public/LoginPage';
-import { SignupPage } from './pages/public/SignupPage';
 import { NotFoundPage, PrivacyPage, TermsPage } from './pages/public/StaticPages';
+import MotionsiteHeroPage from './pages/public/MotionsiteHeroPage';
 
 // Admin pages
 import { AdminLoginPage } from './pages/admin/AdminLoginPage';
@@ -33,6 +34,9 @@ import {
 } from './pages/admin/AdminMiscPages';
 
 const router = createBrowserRouter([
+  // ── Standalone Motionsite Hero ──
+  { path: '/hero', element: <MotionsiteHeroPage /> },
+  { path: '/asme', element: <MotionsiteHeroPage /> },
   // ── Public ──
   {
     element: <PublicLayout />,
@@ -40,13 +44,13 @@ const router = createBrowserRouter([
       { path: '/', element: <HomePage /> },
       { path: '/about', element: <AboutPage /> },
       { path: '/services', element: <ServicesPage /> },
+      { path: '/services/:slug', element: <ServiceDetailPage /> },
       { path: '/projects', element: <ProjectsPage /> },
       { path: '/projects/:slug', element: <ProjectDetailPage /> },
+      { path: '/pricing', element: <PricingPage /> },
       { path: '/blog', element: <BlogPage /> },
       { path: '/blog/:slug', element: <BlogDetailPage /> },
       { path: '/contact', element: <ContactPage /> },
-      { path: '/login', element: <LoginPage /> },
-      { path: '/signup', element: <SignupPage /> },
       { path: '/privacy', element: <PrivacyPage /> },
       { path: '/terms', element: <TermsPage /> },
       { path: '*', element: <NotFoundPage /> },

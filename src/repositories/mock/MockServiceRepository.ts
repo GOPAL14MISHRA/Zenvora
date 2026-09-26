@@ -2,8 +2,25 @@ import type { Service } from '../../types';
 import type { IServiceRepository } from '../interfaces/IServiceRepository';
 import { services as initialData } from '../../data/services';
 
+const STORAGE_KEY = 'zenvora_services';
+
 export class MockServiceRepository implements IServiceRepository {
-  private store: Service[] = [...initialData];
+  private get store(): Service[] {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (stored) {
+      try {
+        return JSON.parse(stored);
+      } catch (e) {
+        console.error('Failed to parse stored services', e);
+      }
+    }
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(initialData));
+    return [...initialData];
+  }
+
+  private set store(data: Service[]) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+  }
 
   async getAll(): Promise<Service[]> {
     return [...this.store].sort((a, b) => a.order - b.order);
@@ -20,15 +37,19 @@ export class MockServiceRepository implements IServiceRepository {
   async create(data: Omit<Service, 'id' | 'createdAt' | 'updatedAt'>): Promise<Service> {
     const now = new Date().toISOString();
     const service: Service = { ...data, id: Date.now().toString(), createdAt: now, updatedAt: now };
-    this.store.push(service);
+    const currentStore = this.store;
+    currentStore.push(service);
+    this.store = currentStore;
     return service;
   }
 
   async update(id: string, data: Partial<Service>): Promise<Service> {
-    const index = this.store.findIndex((s) => s.id === id);
+    const currentStore = this.store;
+    const index = currentStore.findIndex((s) => s.id === id);
     if (index === -1) throw new Error(`Service ${id} not found`);
-    this.store[index] = { ...this.store[index], ...data, updatedAt: new Date().toISOString() };
-    return this.store[index];
+    currentStore[index] = { ...currentStore[index], ...data, updatedAt: new Date().toISOString() };
+    this.store = currentStore;
+    return currentStore[index];
   }
 
   async delete(id: string): Promise<void> {

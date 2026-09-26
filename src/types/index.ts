@@ -97,6 +97,8 @@ export interface TeamMember {
   role: string;
   bio: string;
   avatar?: string;
+  initials?: string;
+  skills?: string[];
   github?: string;
   linkedin?: string;
   twitter?: string;

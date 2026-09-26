@@ -1,99 +1,39 @@
-import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { CheckCircle2, Target, Heart } from 'lucide-react';
+import { CheckCircle2, Target, Heart, Sparkles, ShieldCheck } from 'lucide-react';
 import { SEO } from '../../components/SEO';
-import { TeamCard } from '../../components/ui/Cards';
-import { teamRepository } from '../../repositories/mock/MockTeamRepository';
-import { CTASection } from '../../components/sections/HomeSections';
-import type { TeamMember } from '../../types';
+import { AboutSection, TeamSection, CTASection } from '../../components/sections/HomeSections';
 
 const values = [
-  { icon: CheckCircle2, label: 'Quality', desc: 'We care deeply about the quality of everything we build.' },
-  { icon: Target, label: 'Transparency', desc: 'We communicate clearly and honestly at every stage.' },
-  { icon: Heart, label: 'Ownership', desc: 'We take full ownership of our work and its outcomes.' },
-  { icon: CheckCircle2, label: 'Innovation', desc: 'We embrace modern tools and fresh thinking.' },
-  { icon: Target, label: 'Long-Term Thinking', desc: 'We build for scale, not just for today.' },
+  { icon: CheckCircle2, label: 'Quality First', desc: 'We care deeply about code quality, architecture, and UI precision in everything we build.' },
+  { icon: Target, label: 'Transparency', desc: 'Direct, honest communication with clear milestones and transparent development progress.' },
+  { icon: Heart, label: 'Full Ownership', desc: 'We take end-to-end accountability for our engineering outcomes and user experiences.' },
+  { icon: Sparkles, label: 'Modern Stack', desc: 'We leverage modern tools, frameworks, and practical AI to deliver high-velocity results.' },
+  { icon: ShieldCheck, label: 'Long-Term Thinking', desc: 'We engineer digital products for long-term scalability, clean maintenance, and business growth.' },
 ];
 
 export function AboutPage() {
-  const [team, setTeam] = useState<TeamMember[]>([]);
-
-  useEffect(() => {
-    teamRepository.getPublished().then(setTeam);
-  }, []);
-
   return (
-    <>
-      <SEO title="About" description="Learn about Zenvora Digital, our story, mission, values and team." />
+    <div className="bg-[#F7F4EE] min-h-screen pt-20">
+      <SEO title="About" description="Learn about Zenvora Digital Studio, our capabilities and two-person engineering team." />
 
-      {/* Hero */}
-      <section className="relative pt-32 pb-20 overflow-hidden">
-        <div className="absolute inset-0 grid-bg" />
-        <div className="absolute top-1/3 left-1/4 w-80 h-80 bg-blue-500/5 rounded-full blur-3xl" />
-        <div className="container-custom relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="max-w-3xl"
-          >
-            <p className="text-blue-400 text-xs font-semibold uppercase tracking-widest mb-4">About Us</p>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-              Building Digital Products With Purpose.
-            </h1>
-            <p className="text-gray-400 text-lg leading-relaxed max-w-2xl">
-              Zenvora Digital is a software and digital product studio focused on building modern digital experiences for businesses, startups and founders.
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Story */}
-      <section className="section-padding bg-[#0D1117]/40">
-        <div className="container-custom">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-              <p className="text-blue-400 text-xs font-semibold uppercase tracking-widest mb-3">Our Story</p>
-              <h2 className="text-3xl font-bold text-white mb-5">A Studio Built Around Great Products</h2>
-              <div className="space-y-4 text-gray-400 leading-relaxed">
-                <p>
-                  Zenvora Digital was founded with a clear purpose: to build digital products that actually work for the businesses and people using them.
-                </p>
-                <p>
-                  We are a modern digital product studio focused on the intersection of design, engineering and practical technology. We work with startups, businesses and founders who want to build something meaningful in the digital world.
-                </p>
-                <p>
-                  Every project we take on starts with a simple question: what problem are we actually solving? From there, we design, engineer and deliver digital experiences built for the real world.
-                </p>
-              </div>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="card-base p-8 border-blue-500/10"
-            >
-              <p className="text-blue-400 text-xs font-semibold uppercase tracking-widest mb-4">Our Mission</p>
-              <p className="text-2xl font-semibold text-white leading-snug">
-                "Make high-quality digital technology accessible to ambitious businesses and founders."
-              </p>
-            </motion.div>
-          </div>
-        </div>
-      </section>
+      {/* Main Concise About Section */}
+      <AboutSection />
 
       {/* Values */}
-      <section className="section-padding">
+      <section className="section-padding bg-[#EBE7DF]/30 border-t border-[#DED9D0]">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mb-12"
+            className="mb-14 text-center max-w-xl mx-auto"
           >
-            <p className="text-blue-400 text-xs font-semibold uppercase tracking-widest mb-3">Values</p>
-            <h2 className="text-3xl font-bold text-white">What We Stand For</h2>
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#FCE8E2] border border-[#E85D3F]/25 text-[#E85D3F] text-xs font-bold uppercase tracking-widest mb-3">
+              OUR VALUES
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#171717] tracking-tight">What We Stand For</h2>
           </motion.div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {values.map((v, i) => {
               const Icon = v.icon;
               return (
@@ -103,11 +43,13 @@ export function AboutPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.08 }}
-                  className="card-base p-5 hover:border-blue-500/20 transition-all"
+                  className="bg-white p-6 sm:p-7 hover:border-[#E85D3F]/40 rounded-2xl border border-[#DED9D0] transition-all shadow-xs"
                 >
-                  <Icon size={18} className="text-blue-400 mb-3" />
-                  <h3 className="text-white font-semibold text-sm mb-1.5">{v.label}</h3>
-                  <p className="text-gray-400 text-xs leading-relaxed">{v.desc}</p>
+                  <div className="w-10 h-10 rounded-xl bg-[#FCE8E2] border border-[#E85D3F]/20 flex items-center justify-center mb-4 text-[#E85D3F]">
+                    <Icon size={20} />
+                  </div>
+                  <h3 className="text-[#171717] font-bold text-base mb-2">{v.label}</h3>
+                  <p className="text-[#5F5A52] text-xs sm:text-sm leading-relaxed">{v.desc}</p>
                 </motion.div>
               );
             })}
@@ -115,28 +57,10 @@ export function AboutPage() {
         </div>
       </section>
 
-      {/* Team */}
-      <section className="section-padding bg-[#0D1117]/40">
-        <div className="container-custom">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center max-w-xl mx-auto mb-12"
-          >
-            <p className="text-blue-400 text-xs font-semibold uppercase tracking-widest mb-3">Team</p>
-            <h2 className="text-3xl font-bold text-white mb-3">Meet The Team</h2>
-            <p className="text-gray-400">The people building Zenvora Digital.</p>
-          </motion.div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 max-w-2xl mx-auto gap-5">
-            {team.map((m, i) => <TeamCard key={m.id} member={m} index={i} />)}
-          </div>
-        </div>
-      </section>
+      {/* Team Section */}
+      <TeamSection />
 
       <CTASection />
-    </>
+    </div>
   );
 }
-
-
