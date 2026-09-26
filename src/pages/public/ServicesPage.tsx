@@ -37,12 +37,12 @@ export function ServicesPage() {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.2 }}
-              className="w-full lg:w-[48%] flex justify-center lg:justify-end mt-8 lg:mt-0"
+              className="w-full lg:w-[48%] mt-8 lg:mt-0 relative h-[300px] sm:h-[400px] lg:h-[450px]"
             >
               <img 
                 src="/wide_clean_minimal_vector_3d_style_illustration.png" 
                 alt="Web development and digital solutions illustration" 
-                className="w-full max-w-lg lg:max-w-none h-auto object-contain mix-blend-multiply drop-shadow-sm"
+                className="w-full h-full object-cover object-right mix-blend-multiply drop-shadow-sm"
                 loading="eager"
               />
             </motion.div>
