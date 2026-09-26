@@ -128,13 +128,7 @@ export function Navbar() {
               <div>
                 <div className="flex items-center justify-between p-6 border-b border-[#DED9D0]">
                   <div className="flex items-center gap-2">
-                    <div className="w-7 h-7 rounded-lg bg-[#171717] flex items-center justify-center text-white font-bold text-xs">
-                      Z
-                    </div>
-                    <div>
-                      <span className="text-[#171717] font-extrabold text-sm tracking-wider uppercase block leading-none">ZENVORA</span>
-                      <span className="text-[7.5px] text-[#E85D3F] font-bold tracking-widest uppercase block mt-0.5">DIGITALS</span>
-                    </div>
+                    <img src="/logo.png" alt="Zenvora Digitals" className="h-10 w-auto object-contain" />
                   </div>
                   <button
                     onClick={() => setMobileOpen(false)}
