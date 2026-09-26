@@ -5,11 +5,12 @@ import { SEO } from '../../components/SEO';
 import { ProjectCard } from '../../components/ui/Cards';
 import { AmbientBackground } from '../../components/ui/AmbientBackground';
 import { projectRepository } from '../../repositories/firebase/FirebaseProjectRepository';
+import { projects as initialProjects } from '../../data/projects';
 import type { Project } from '../../types';
 
 export function ProjectsPage() {
-  const [projects, setProjects] = useState<Project[]>([]);
-  const [filtered, setFiltered] = useState<Project[]>([]);
+  const [projects, setProjects] = useState<Project[]>(initialProjects);
+  const [filtered, setFiltered] = useState<Project[]>(initialProjects);
   const [category, setCategory] = useState('All');
   const [search, setSearch] = useState('');
 

@@ -10,6 +10,7 @@ import {
 import { ProjectCard } from '../../components/ui/Cards';
 import { AmbientBackground } from '../../components/ui/AmbientBackground';
 import { projectRepository } from '../../repositories/firebase/FirebaseProjectRepository';
+import { projects as initialProjects } from '../../data/projects';
 import type { Project } from '../../types';
 
 import { getOrganizationSchema, getWebSiteSchema } from '../../utils/seoUtils';
@@ -17,7 +18,7 @@ import { getOrganizationSchema, getWebSiteSchema } from '../../utils/seoUtils';
 const homeSchemas = [getOrganizationSchema(), getWebSiteSchema()];
 
 export function HomePage() {
-  const [featured, setFeatured] = useState<Project[]>([]);
+  const [featured, setFeatured] = useState<Project[]>(initialProjects.filter(p => p.featured));
 
   useEffect(() => {
     const unsubscribe = projectRepository.subscribe((data) => {

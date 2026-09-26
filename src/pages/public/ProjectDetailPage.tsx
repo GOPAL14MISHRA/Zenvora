@@ -8,14 +8,15 @@ import { SEO } from '../../components/SEO';
 import { ProjectCard } from '../../components/ui/Cards';
 import { AmbientBackground } from '../../components/ui/AmbientBackground';
 import { projectRepository } from '../../repositories/firebase/FirebaseProjectRepository';
+import { projects as initialProjects } from '../../data/projects';
 import type { Project } from '../../types';
 import { getBreadcrumbSchema, getProjectSchema } from '../../utils/seoUtils';
 
 export function ProjectDetailPage() {
   const { slug } = useParams<{ slug: string }>();
-  const [project, setProject] = useState<Project | null>(null);
-  const [related, setRelated] = useState<Project[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [project, setProject] = useState<Project | null>(() => initialProjects.find(p => p.slug === slug) || null);
+  const [related, setRelated] = useState<Project[]>(() => initialProjects.filter(p => p.slug !== slug).slice(0, 3));
+  const [loading, setLoading] = useState(() => !initialProjects.find(p => p.slug === slug));
 
   useEffect(() => {
     if (!slug) return;

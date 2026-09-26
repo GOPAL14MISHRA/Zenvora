@@ -5,13 +5,14 @@ import { SEO } from '../../components/SEO';
 import { BlogCard } from '../../components/ui/Cards';
 import { AmbientBackground } from '../../components/ui/AmbientBackground';
 import { blogRepository } from '../../repositories/firebase/FirebaseBlogRepository';
+import { blogPosts as initialPosts } from '../../data/blogs';
 import type { BlogPost } from '../../types';
 
 const categories = ['All', 'Development', 'AI', 'Web Development', 'Business', 'UI/UX', 'Technology'];
 
 export function BlogPage() {
-  const [posts, setPosts] = useState<BlogPost[]>([]);
-  const [filtered, setFiltered] = useState<BlogPost[]>([]);
+  const [posts, setPosts] = useState<BlogPost[]>(initialPosts);
+  const [filtered, setFiltered] = useState<BlogPost[]>(initialPosts);
   const [category, setCategory] = useState('All');
   const [search, setSearch] = useState('');
 

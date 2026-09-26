@@ -4,6 +4,7 @@ import { ArrowLeft, Calendar, Clock, User, Tag } from 'lucide-react';
 import { SEO } from '../../components/SEO';
 import { BlogCard } from '../../components/ui/Cards';
 import { blogRepository } from '../../repositories/firebase/FirebaseBlogRepository';
+import { blogPosts as initialPosts } from '../../data/blogs';
 import type { BlogPost } from '../../types';
 import { getBreadcrumbSchema, getArticleSchema } from '../../utils/seoUtils';
 
@@ -33,9 +34,9 @@ function renderContent(content: string) {
 
 export function BlogDetailPage() {
   const { slug } = useParams<{ slug: string }>();
-  const [post, setPost] = useState<BlogPost | null>(null);
-  const [related, setRelated] = useState<BlogPost[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [post, setPost] = useState<BlogPost | null>(() => initialPosts.find(p => p.slug === slug) || null);
+  const [related, setRelated] = useState<BlogPost[]>(() => initialPosts.filter(p => p.slug !== slug).slice(0, 3));
+  const [loading, setLoading] = useState(() => !initialPosts.find(p => p.slug === slug));
 
   useEffect(() => {
     if (!slug) return;
