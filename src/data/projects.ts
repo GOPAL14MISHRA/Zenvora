@@ -22,9 +22,9 @@ export const projects: Project[] = [
     ],
     category: 'E-commerce',
     technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Node.js', 'E-commerce'],
-    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80',
+    image: 'https://images.squarespace-cdn.com/content/v1/63999afeb7020c7bef60443a/1671013464211-43XT1U8UJH5HFWNH59KZ/RZ-Blog-39.png',
     gallery: [
-      'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80',
+      'https://images.squarespace-cdn.com/content/v1/63999afeb7020c7bef60443a/1671013464211-43XT1U8UJH5HFWNH59KZ/RZ-Blog-39.png',
       'https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=800&q=80',
     ],
     liveUrl: undefined,

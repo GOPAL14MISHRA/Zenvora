@@ -68,7 +68,7 @@ export function ProjectCard({ project, index = 0 }: { project: Project; index?: 
             <span className="w-2.5 h-2.5 rounded-full bg-[#DED9D0]" />
           </div>
           <div className="text-[10px] font-mono text-[#5F5A52] max-w-[160px] truncate">
-            {project.liveUrl ? project.liveUrl.replace('https://', '').replace('/', '') : `${project.slug}.zenvora.dev`}
+            {project.liveUrl ? project.liveUrl.replace('https://', '').replace('/', '') : `${project.slug}.zenvoradigitals.tech`}
           </div>
         </div>
 

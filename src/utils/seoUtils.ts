@@ -1,5 +1,5 @@
 // ─── SEO & JSON-LD Structured Data Helper ──────────────────────────────────
-export const SITE_URL = 'https://zenvora.dev';
+export const SITE_URL = 'https://zenvoradigitals.tech';
 export const SITE_NAME = 'Zenvora Digital Studio';
 export const DEFAULT_OG_IMAGE = 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1200&q=80';
 
