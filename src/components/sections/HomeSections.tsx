@@ -393,23 +393,40 @@ export function ServicesSection({ hideHeader = false }: { hideHeader?: boolean }
       <AmbientBackground variant="services" />
       <div className="container-custom relative z-10">
         {!hideHeader && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="max-w-2xl mb-12 sm:mb-16"
-          >
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#FCE8E2] border border-[#E85D3F]/25 text-[#E85D3F] text-xs font-bold uppercase tracking-widest mb-4">
-              SERVICES
-            </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#171717] mb-4 tracking-tight leading-tight">
-              Websites & Web Applications Built For Business.
-            </h2>
-            <p className="text-[#5F5A52] text-base sm:text-lg leading-relaxed">
-              From business websites to custom web applications, we design and develop digital experiences around real business goals.
-            </p>
-          </motion.div>
+          <div className="flex flex-col lg:flex-row items-center justify-between mb-12 sm:mb-16 gap-10">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="w-full lg:w-1/2 max-w-2xl"
+            >
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#FCE8E2] border border-[#E85D3F]/25 text-[#E85D3F] text-xs font-bold uppercase tracking-widest mb-4">
+                SERVICES
+              </div>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#171717] mb-4 tracking-tight leading-tight">
+                Websites & Web Applications Built For Business.
+              </h2>
+              <p className="text-[#5F5A52] text-base sm:text-lg leading-relaxed">
+                From business websites to custom web applications, we design and develop digital experiences around real business goals.
+              </p>
+            </motion.div>
+            
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="w-full lg:w-[48%] flex justify-center lg:justify-end mt-8 lg:mt-0"
+            >
+              <img 
+                src="/wide_clean_minimal_vector_3d_style_illustration.png" 
+                alt="Web development and digital solutions illustration" 
+                className="w-full max-w-lg lg:max-w-none h-auto object-contain drop-shadow-sm mix-blend-multiply"
+                loading="eager"
+              />
+            </motion.div>
+          </div>
         )}
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
