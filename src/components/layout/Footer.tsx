@@ -41,7 +41,7 @@ export function Footer() {
           {/* Brand – 4 cols */}
           <div className="lg:col-span-4">
             <Link to="/" className="block mb-5">
-              <img src="/logo.png" alt="Zenvora Digitals" className="h-16 md:h-20 w-auto object-contain" />
+              <img src="/logo.png" alt="Zenvora Digitals" className="h-16 md:h-20 w-auto object-contain brightness-0 invert" />
             </Link>
             <p className="text-[#A39E93] text-sm leading-relaxed mb-6 max-w-sm">
               We design and build modern websites, e-commerce platforms, and custom web applications for growing businesses and ambitious brands.
