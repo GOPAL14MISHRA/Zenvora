@@ -61,7 +61,7 @@ export function ServiceDetailPage() {
       <SEO
         title={service.metaTitle}
         description={service.metaDescription}
-        url={`https://zenvoradigitals.tech/services/${service.slug}`}
+        url={`https://www.zenvoradigitals.tech/services/${service.slug}`}
         type="service"
         schema={[breadcrumbSchema, serviceSchema]}
       />

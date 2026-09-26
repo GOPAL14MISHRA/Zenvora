@@ -141,7 +141,7 @@ export function ContactPage() {
       <SEO
         title="Contact Us | Start a Digital Project"
         description="Contact Zenvora Digital Studio to discuss your website, web application, e-commerce, UI/UX, or custom software project. Get a project estimate today."
-        url="https://zenvoradigitals.tech/contact"
+        url="https://www.zenvoradigitals.tech/contact"
         schema={contactBreadcrumb}
       />
 

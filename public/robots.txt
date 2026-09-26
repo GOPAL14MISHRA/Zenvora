@@ -14,4 +14,4 @@ Disallow: /admin/
 Disallow: /admin
 Disallow: /api/
 
-Sitemap: https://zenvoradigitals.tech/sitemap.xml
+Sitemap: https://www.zenvoradigitals.tech/sitemap.xml

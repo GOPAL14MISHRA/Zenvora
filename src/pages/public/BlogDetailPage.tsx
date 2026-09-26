@@ -87,7 +87,7 @@ export function BlogDetailPage() {
         title={post.title}
         description={post.excerpt}
         image={post.coverImage}
-        url={`https://zenvoradigitals.tech/blog/${post.slug}`}
+        url={`https://www.zenvoradigitals.tech/blog/${post.slug}`}
         type="article"
         publishedTime={post.publishedAt}
         author={post.author}

@@ -65,7 +65,7 @@ export function ProjectDetailPage() {
         title={`${project.title} Case Study`}
         description={project.shortDescription}
         image={project.image}
-        url={`https://zenvoradigitals.tech/projects/${project.slug}`}
+        url={`https://www.zenvoradigitals.tech/projects/${project.slug}`}
         schema={[breadcrumbSchema, projectSchema]}
       />
 
