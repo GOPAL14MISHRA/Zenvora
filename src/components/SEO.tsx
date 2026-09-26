@@ -27,12 +27,12 @@ export function SEO({
   const currentPath = typeof window !== 'undefined' ? window.location.pathname : '';
   const canonicalUrl = url || `${SITE_URL}${currentPath}`;
   const fullTitle = title
-    ? `${title} | Zenvora Digital Studio`
-    : 'Zenvora Digital Studio | Web Development & Digital Solutions';
+    ? `${title} | Zenvora Digitals`
+    : 'Zenvora Digitals | Websites, Web Apps & Digital Solutions';
 
   const desc =
     description ||
-    'Zenvora Digital Studio designs and builds web applications, custom websites, e-commerce platforms, UI/UX, AI solutions, and digital software for modern businesses.';
+    'Zenvora Digitals builds professional websites, web applications, e-commerce stores, SaaS products and AI-powered digital solutions for businesses in India and worldwide.';
 
   const ogImage = image || DEFAULT_OG_IMAGE;
 

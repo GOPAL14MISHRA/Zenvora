@@ -1,6 +1,6 @@
 // ─── SEO & JSON-LD Structured Data Helper ──────────────────────────────────
 export const SITE_URL = 'https://www.zenvoradigitals.tech';
-export const SITE_NAME = 'Zenvora Digital Studio';
+export const SITE_NAME = 'Zenvora Digitals';
 export const DEFAULT_OG_IMAGE = 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1200&q=80';
 
 export interface BreadcrumbItem {
@@ -23,7 +23,7 @@ export function getOrganizationSchema() {
       height: '192',
     },
     description:
-      'Zenvora Digital Studio designs and builds web applications, custom websites, e-commerce platforms, UI/UX, AI solutions, and digital software for modern businesses.',
+      'Zenvora Digitals builds professional websites, web applications, e-commerce stores, SaaS products and AI-powered digital solutions for businesses in India and worldwide.',
     email: 'mishragopal532a20@gmail.com',
     address: {
       '@type': 'PostalAddress',
