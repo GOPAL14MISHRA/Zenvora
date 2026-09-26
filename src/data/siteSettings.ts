@@ -2,7 +2,7 @@ import type { SiteSettings } from '../types';
 
 export const siteSettings: SiteSettings = {
   // General
-  companyName: 'Zenvora',
+  companyName: 'Zenvora Digitals',
   tagline: 'We design and build digital experiences for modern businesses.',
   email: 'mishragopal532a20@gmail.com',
   phone: undefined,
@@ -44,12 +44,12 @@ export const siteSettings: SiteSettings = {
   twitter: 'https://x.com/zenvoradigital',
 
   // SEO
-  metaTitle: 'Zenvora Digital Studio – Digital Products & Custom Software',
+  metaTitle: 'Zenvora Digitals | Websites, Web Apps & Digital Solutions',
   metaDescription:
-    'Zenvora Digital Studio designs and builds web applications, SaaS platforms, UI/UX, e-commerce, and custom software for modern businesses.',
+    'Zenvora Digitals builds professional websites, web applications, e-commerce stores, SaaS products and AI-powered digital solutions for businesses in India and worldwide.',
   ogImage: undefined,
 
   // Footer
   footerDescription: 'We design and build digital experiences, web applications, and custom software for modern businesses.',
-  copyright: '© 2026 Zenvora Digital Studio. All rights reserved.',
+  copyright: '© 2026 Zenvora Digitals. All rights reserved.',
 };

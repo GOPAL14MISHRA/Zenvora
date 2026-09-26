@@ -133,7 +133,7 @@ export function Navbar() {
                     </div>
                     <div>
                       <span className="text-[#171717] font-extrabold text-sm tracking-wider uppercase block leading-none">ZENVORA</span>
-                      <span className="text-[7.5px] text-[#E85D3F] font-bold tracking-widest uppercase block mt-0.5">DIGITAL STUDIO</span>
+                      <span className="text-[7.5px] text-[#E85D3F] font-bold tracking-widest uppercase block mt-0.5">DIGITALS</span>
                     </div>
                   </div>
                   <button

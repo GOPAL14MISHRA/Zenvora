@@ -29,8 +29,8 @@ export function HomePage() {
   return (
     <>
       <SEO
-        title="Zenvora Digital Studio | Web Development & Digital Solutions"
-        description="Zenvora Digital Studio designs and builds custom web applications, business websites, e-commerce platforms, UI/UX, AI solutions, and digital software for modern businesses."
+        title="Zenvora Digitals | Websites, Web Apps & Digital Solutions"
+        description="Zenvora Digitals builds professional websites, web applications, e-commerce stores, SaaS products and AI-powered digital solutions for businesses in India and worldwide."
         schema={homeSchemas}
       />
       <HeroSection />

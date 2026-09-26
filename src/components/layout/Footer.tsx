@@ -18,12 +18,12 @@ const navLinks = [
 ];
 
 const serviceLinks = [
-  { label: 'Full-Stack Development', href: '/services' },
-  { label: 'SaaS Development', href: '/services' },
-  { label: 'E-commerce', href: '/services' },
-  { label: 'AI Integration', href: '/services' },
-  { label: 'UI/UX Design', href: '/services' },
-  { label: 'Backend & APIs', href: '/services' },
+  { label: 'Full-Stack Development', href: '/services/web-development' },
+  { label: 'SaaS Development', href: '/services/web-applications' },
+  { label: 'E-commerce', href: '/services/ecommerce' },
+  { label: 'AI Integration', href: '/services/ai-integration' },
+  { label: 'UI/UX Design', href: '/services/ui-ux' },
+  { label: 'Backend & APIs', href: '/services/backend-api' },
 ];
 
 export function Footer() {
@@ -173,7 +173,7 @@ export function Footer() {
       <div className="border-t border-[#262626] bg-[#0F0F0F]">
         <div className="container-custom py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-3">
-            <p className="text-[#787268] text-xs font-medium">© 2026 Zenvora Digital Studio. All rights reserved.</p>
+            <p className="text-[#787268] text-xs font-medium">© 2026 Zenvora Digitals. All rights reserved.</p>
           </div>
           <div className="flex items-center gap-4">
             <Link to="/privacy" className="text-[#787268] hover:text-[#DED9D0] text-xs transition-colors">Privacy Policy</Link>
